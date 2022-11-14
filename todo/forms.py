@@ -13,7 +13,7 @@ class TaskForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=False,
     )
-    deadline = forms.DateTimeField(widget=DateTimeInput)
+    deadline = forms.DateTimeField(widget=DateTimeInput, required=False)
 
     class Meta:
         model = Task
