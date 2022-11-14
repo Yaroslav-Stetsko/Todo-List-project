@@ -20,5 +20,8 @@ class Task(models.Model):
     task_done = models.BooleanField()
     tags = models.ManyToManyField(Tag, related_name="tasks")
 
+    class Meta:
+        ordering = ["-task_done"]
+
     def __str__(self):
         return self.content
