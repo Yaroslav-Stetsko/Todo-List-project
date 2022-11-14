@@ -1,6 +1,6 @@
 from django.urls import path
 
-from todo.views import index, TagListView, TagCreateView, TagUpdateView, TagDeleteView, TaskListView, TaskDeleteView, \
+from todo.views import TagListView, TagCreateView, TagUpdateView, TagDeleteView, TaskListView, TaskDeleteView, \
     TaskUpdateView, TaskCreateView
 
 urlpatterns = [
