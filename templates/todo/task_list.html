@@ -48,14 +48,15 @@
 Tags:
 
 {% for tag in task.tags.all %}
-<a style="color: grey" href="{% url "todo:tag-list" %}">{{ tag.name }}</a>
+<a class="btn-outline-secondary my-2 my-sm-0" href="{% url "todo:tag-list" %}">{{ tag.name }}</a>
 {% endfor %}
-
-<a class="btn-outline-primary my-2 my-sm-0" href="{% url "todo:task-update" pk=task.pk %}">
+  <br>
+  <br>
+<a class="btn btn-outline-primary my-2 my-sm-0" href="{% url "todo:task-update" pk=task.pk %}">
 Update
 </a>
 
-<a class="btn-outline-danger my-2 my-sm-0" href="{% url "todo:task-delete" pk=task.pk %}">
+<a class="btn btn-outline-danger my-2 my-sm-0" href="{% url "todo:task-delete" pk=task.pk %}">
 Delete
 </a>
 
