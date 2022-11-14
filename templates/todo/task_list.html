@@ -15,27 +15,31 @@
 {% for task in task_list %}
 <p>
   <strong>{{ task.content }}</strong>
-   {% if task.is_done %}
+   {% if task.task_done %}
     <strong style="color: green">Done</strong>
    {% else %}
     <strong style="color: red">Not Done</strong>
    {% endif %}
 
    <a style="float: right" href="">
-   {% if task.is_done %}
+   {% if task.task_done %}
 
-   <a href="" style="float: right">
-   <button onclick="{{ task.is_done }}" style="background: dimgrey; color: white; border-radius: 8px">Undo</button>
-   </a>
+     <a href="{% url 'todo:manage-task' pk=task.id %}" style="float: right" class="btn btn-secondary">
+     Undo
+     </a>
 
    {% else %}
-   <button class="btn btn-success">Complete</button>
+
+     <a href="{% url 'todo:manage-task' pk=task.id %}" style="float: right" class="btn btn-success">
+     Complete
+     </a>
+
    {% endif %}
    </a>
 </p>
 
 <p>
-  Created: {{ task.created_date }}
+  Created: {{ task.created_at }}
    {% if task.deadline %}
    Deadline: {{ task.deadline }}
    {% endif %}
@@ -44,15 +48,15 @@
 Tags:
 
 {% for tag in task.tags.all %}
-<a href="{% url "todo:tag-list" %}">{{ tag.name }}</a>
+<a style="color: grey" href="{% url "todo:tag-list" %}">{{ tag.name }}</a>
 {% endfor %}
 
-<a href="{% url "todo:task-update" pk=task.pk %}">
-<strong>Update</strong>
+<a class="btn-outline-primary my-2 my-sm-0" href="{% url "todo:task-update" pk=task.pk %}">
+Update
 </a>
 
-<a href="{% url "todo:task-delete" pk=task.pk %}">
-<strong>Delete</strong>
+<a class="btn-outline-danger my-2 my-sm-0" href="{% url "todo:task-delete" pk=task.pk %}">
+Delete
 </a>
 
 <hr>

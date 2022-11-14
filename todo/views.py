@@ -56,9 +56,8 @@ class TagDeleteView(generic.DeleteView):
 
 
 def manage_task(request, pk):
-    task = Task.objects.get(id=request.user.id)
-    if Tag.objects.get(id=pk) in task.tags.all():
-        Task.tags.remove(pk)
-    else:
-        Task.tags.add(pk)
-    return HttpResponseRedirect(reverse_lazy("todo:task_list", args=[pk]))
+    task = Task.objects.get(pk=pk)
+    task.task_done = not task.task_done
+    task.save()
+
+    return HttpResponseRedirect(reverse_lazy("todo:task-list"))
