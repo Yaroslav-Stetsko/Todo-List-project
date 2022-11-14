@@ -4,12 +4,12 @@
 {% block content %}
   <h1>
     Tag List
-    <a href="#" class="btn btn-primary">
+    <a href="{% url 'todo:tag-create' %}" class="btn btn-primary">
       Create
     </a>
   </h1>
 
-  {% if manufacturer_list %}
+  {% if tag_list %}
     <form action="" method="get" class="form-inline">
     {{ search_form|crispy }}
     <input type="submit" value="🔍" class="btn btn-secondary">
@@ -31,13 +31,13 @@
               {{ tag.name }}
           </td>
           <td>
-              <a href="#">
+              <a href="{% url 'todo:manufacturer-update' pk=tag.pk%}">
                 Update
               </a>
             </td>
             <td>
               <a style="color: red"
-                href="#">
+                href="{% url 'todo:manufacturer-delete' pk=tag.pk%}">
                 Delete
               </a>
             </td>
