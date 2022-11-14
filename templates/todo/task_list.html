@@ -44,7 +44,7 @@
 Tags:
 
 {% for tag in task.tags.all %}
-<a href="{% url "todo:tag_list" %}">{{ tag.name }}</a>
+<a href="{% url "todo:tag-list" %}">{{ tag.name }}</a>
 {% endfor %}
 
 <a href="{% url "todo:task-update" pk=task.pk %}">
