@@ -10,18 +10,18 @@ class Tag(models.Model):
         ordering = ["name"]
 
     def __str__(self):
-        return f"{self.name}"
+        return self.name
 
 
 class Task(models.Model):
-    content = models.CharField(max_length=255)
+    content = models.CharField(blank=True, null=True)
     datetime = models.DateTimeField(auto_now_add=True)
     deadline = models.DateTimeField(blank=True, null=True)
-    task_done = models.BooleanField()
+    task_done = models.BooleanField(default=False)
     tags = models.ManyToManyField(Tag, related_name="tasks")
 
     class Meta:
-        ordering = ["-task_done"]
+        ordering = ["task_done", "-created_date"]
 
     def __str__(self):
         return self.content
